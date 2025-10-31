@@ -11,7 +11,7 @@ class Money(object):
         return self.kop
 
     def __str__(self) -> str:
-        return f'{self.rub} руб. {self.kop} коп.'
+        return f'{self.rub} руб. {self.kop:02d} коп.'
 
     def __add__(self, other):
         """ Реализация оператора +. Главные - это левый операнд.
@@ -19,6 +19,15 @@ class Money(object):
             соответствующей операции.
         """
         return Money(self.rub + other.rub, self.kop + other.kop)
+
+    def __mul__(self, scalar: int):
+        """ Реализуем умножение числа на монету. """
+        return Money(self.rub * scalar, self.kop * scalar)
+
+    def __rmul__(self, scalar: int):
+        """ self(money instance) будет правым операндом и он
+            будет вызывать этот dunder метод"""
+        return self * scalar  # реализовали через self.__mul__()
 
 
 if __name__ == '__main__':
@@ -29,9 +38,12 @@ if __name__ == '__main__':
     print(f'{money2.rub = }, {money2.kop = }')
     # Явный вызов явных методов
     print(money1.get_rub(), money1.get_kop())  # Money.get_rub(self=money1)
-    print(money1)
-    print(money2)
+    print(money1, money2)
     # Проверка работы оператора +
     money3 = money1 + money2
     print(money3)
     print("Атрибуты экземпляра:", vars(money1)) # вернет словарь полей(fields)
+    money4 = money1 * 5  # money1.__mul__(5)
+    print(money4)
+    money5 = 5 * money1 # 5.__mul__(money1) -> NotImplemented -> money1.__rmul__(5) -> Done
+    print(money5)
