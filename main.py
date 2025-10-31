@@ -29,6 +29,14 @@ class Money(object):
             будет вызывать этот dunder метод"""
         return self * scalar  # реализовали через self.__mul__()
 
+    def __sub__(self, other):
+        """ Реализация оператора - (вычитание)"""
+        pass
+
+    def __truediv__(self, other):
+        """ Реализация оператора / (деление)"""
+        pass
+
 
 if __name__ == '__main__':
     money1 = Money(20, 120)
