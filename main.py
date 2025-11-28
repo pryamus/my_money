@@ -68,3 +68,12 @@ class Money:
     def get_kop(self):
         """ self - это ссылка на конкретный экземпляр при вызове метода """
         return self.kop
+
+
+if __name__ == "__main__":
+    money1 = Money(20, 120)
+    money2 = Money(30, 330)
+    print(f'{money1.rub = }, {money1.kop = }')
+    print("money1", money1.get_rub(), money1.get_kop())
+    print(f'{money2.rub = }, {money2.kop = }')
+    print("money2", money2.get_rub(), money2.get_kop())
