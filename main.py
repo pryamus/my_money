@@ -88,6 +88,14 @@ class Money(object):
         """ Реализация оператора *.  Главный это правый операнд. """
         return self * scalar
 
+    def __sub__(self):
+        """ Реализация оператора - """
+        pass
+
+    def __truediv__(self):
+        """ Реализация оператора / """
+        pass
+
 
 
 if __name__ == "__main__":
