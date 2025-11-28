@@ -25,3 +25,19 @@ class Person:
     name = "Ivan"
     surname = "Petrov"
     age = 18
+
+
+# Класс один, а нам нужно много человек
+print(Person.name)
+print(Person.surname)
+print(Person.age)
+
+# Instance - экземпляр
+person1 = Person()
+person2 = Person()
+print("before:", person1.name, person1.surname)
+print("before:", person2.name, person2.surname)
+person1.name = "Petr"
+person2.surname = "Sidorov"
+print("after:", person1.name, person1.surname)
+print("after:", person2.name, person2.surname)
