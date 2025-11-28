@@ -28,16 +28,43 @@ class Person:
 
 
 # Класс один, а нам нужно много человек
-print(Person.name)
-print(Person.surname)
-print(Person.age)
+# print(Person.name)
+# print(Person.surname)
+# print(Person.age)
 
 # Instance - экземпляр
-person1 = Person()
-person2 = Person()
-print("before:", person1.name, person1.surname)
-print("before:", person2.name, person2.surname)
-person1.name = "Petr"
-person2.surname = "Sidorov"
-print("after:", person1.name, person1.surname)
-print("after:", person2.name, person2.surname)
+# person1 = Person()
+# person2 = Person()
+# print("before:", person1.name, person1.surname)
+# print("before:", person2.name, person2.surname)
+# person1.name = "Petr"
+# person2.surname = "Sidorov"
+# print("after:", person1.name, person1.surname)
+# print("after:", person2.name, person2.surname)
+
+# Можно ли сразу создавать экземпляры с собственными значениями? Да, конечно.
+# Различие между функциями и методами
+# Метод - это функция, которая связана с определенным типом данных(экземпляром класса)
+# lst = [3.23, 4.23]
+# s = 'hello'
+# print(sum(lst), min(lst), max(lst), len(s), round(lst[0], 1)) # это функции
+# print(s.upper()) # это метод
+# lst.append(100.23) # это метод
+# lst.sort()
+# print(lst)
+
+class Money:
+    def __init__(self, rub: int, kop: int):
+        """ dunder(magic) - неявный метод.
+            self - это ссылка на конкретный экземпляр и это всегда первый позиционные аргумент
+        """
+        self.rub = rub + kop // 100
+        self.kop = kop % 100 # копейки не должны превышать значения 99
+
+    def get_rub(self):
+        """ self - это ссылка на конкретный экземпляр при вызове метода """
+        return self.rub
+
+    def get_kop(self):
+        """ self - это ссылка на конкретный экземпляр при вызове метода """
+        return self.kop
