@@ -80,6 +80,15 @@ class Money(object):
         """
         return Money(self.rub + other.rub, self.kop + other.kop)
 
+    def __mul__(self, scalar):
+        """ Реализация оператора *.  Главный это левый операнд. """
+        return Money(self.rub * scalar, self.kop * scalar)
+
+    def __rmul__(self, scalar):
+        """ Реализация оператора *.  Главный это правый операнд. """
+        return self * scalar
+
+
 
 if __name__ == "__main__":
     money1 = Money(20, 120)
@@ -92,3 +101,6 @@ if __name__ == "__main__":
     print(money1)
     money3 = money1 + money2
     print('money3:', money3)
+    money4 = money1 * 5
+    print('money4:', money4)
+    money5 = 5 * money1 # 5.__mul__(money1) -> NotImplemented -> money1.__rmul__(5)
