@@ -80,6 +80,14 @@ class Money(object):
         """
         return Money(self.rub + other.rub, self.kop + other.kop)
 
+    def __sub__(self):
+        """ Реализация оператора - """
+        pass
+
+    def __truediv__(self):
+        """ Реализация оператора / """
+        pass
+
 
 if __name__ == "__main__":
     money1 = Money(20, 120)
