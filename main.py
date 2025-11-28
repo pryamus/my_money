@@ -53,10 +53,11 @@ class Person:
 # lst.sort()
 # print(lst)
 
-class Money:
+class Money(object):
     def __init__(self, rub: int, kop: int):
-        """ dunder(magic) - неявный метод.
-            self - это ссылка на конкретный экземпляр и это всегда первый позиционные аргумент
+        """ dunder(magic) - неявный метод. Конструктор класса.
+            self - это ссылка на конкретный экземпляр и это всегда первый позиционный аргумент.
+
         """
         self.rub = rub + kop // 100
         self.kop = kop % 100 # копейки не должны превышать значения 99
@@ -69,11 +70,25 @@ class Money:
         """ self - это ссылка на конкретный экземпляр при вызове метода """
         return self.kop
 
+    def __str__(self) -> str:
+        return f'{self.rub} руб. {self.kop:02d} коп.'
+
+    def __add__(self, other):
+        """ Реализация оператора +. Главный это левый операнд
+            dunder(magic) метод вызывается неявно, когда объект участвует в соответствующей операции
+            m1 + m2 -> m1.__add__(m2)
+        """
+        return Money(self.rub + other.rub, self.kop + other.kop)
+
 
 if __name__ == "__main__":
     money1 = Money(20, 120)
-    money2 = Money(30, 330)
+    money2 = Money(30, 390)
     print(f'{money1.rub = }, {money1.kop = }')
+    # Вызов явного метода
     print("money1", money1.get_rub(), money1.get_kop())
     print(f'{money2.rub = }, {money2.kop = }')
     print("money2", money2.get_rub(), money2.get_kop())
+    print(money1)
+    money3 = money1 + money2
+    print('money3:', money3)
